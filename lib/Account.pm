@@ -7,6 +7,7 @@ my $assessment = 500;
 
 sub new {
     my ($class, $account_number, $balance) = @_;
+    $balance //= 0;
     my $self = {
         account_number => int($account_number),
         balance        => $balance
@@ -22,7 +23,7 @@ sub deposit {
 
 sub debit {
     my ($self, $value) = @_;
-    $self->{balance} -= $value;
+    $self->{balance} += $value;
     if ($self->{balance} < 0) {
         $self->{balance} -= $assessment;
     }

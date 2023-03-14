@@ -37,10 +37,11 @@ sub calculate_balances {
     for my $account_number (keys %{$self->{accounts}}) {
         my $transactions = $self->get_transactions($account_number);
         for my $transaction (@{$transactions}) {
-            if ($transaction->{value} > 0) {
-                $self->{accounts}->{$account_number}->deposit($transaction->{value});
+            my $value = int($transaction->{value});
+            if ( $value > 0) {
+                $self->{accounts}->{$account_number}->deposit($value);
             } else {
-                $self->{accounts}->{$account_number}->debit($transaction->{value});
+                $self->{accounts}->{$account_number}->debit($value);
             }
         }
     }
