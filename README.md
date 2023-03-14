@@ -43,4 +43,10 @@ This will create a `local` folder in your project with all its dependencies so t
 export PERL5LIB=local/lib/perl5
 ```
 
+## Run API
+
+```shell
+carton exec plackup Api.pl -p 8000
+```
+
 
